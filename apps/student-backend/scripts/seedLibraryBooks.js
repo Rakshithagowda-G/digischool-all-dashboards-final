@@ -1,0 +1,307 @@
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import LibraryBook from '../models/library.book.model.js';
+
+dotenv.config();
+
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/student_db';
+
+const libraryBooks = [
+    // PRIMARY LEVEL BOOKS
+    {
+        bookId: 'LIB_PRI_001',
+        title: 'Fun with Numbers - Grade 1',
+        subject: 'Mathematics',
+        educationLevel: 'primary',
+        pdfPath: '/library/primary/math/fun-with-numbers-grade1.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400',
+        author: 'Dr. Sarah Johnson',
+        description: 'An engaging introduction to basic mathematics for young learners.',
+        pages: 120,
+        publishedYear: 2023
+    },
+    {
+        bookId: 'LIB_PRI_002',
+        title: 'My First English Reader',
+        subject: 'English',
+        educationLevel: 'primary',
+        pdfPath: '/library/primary/english/my-first-english-reader.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400',
+        author: 'Emily Watson',
+        description: 'Simple stories and exercises to build reading skills.',
+        pages: 95,
+        publishedYear: 2023
+    },
+    {
+        bookId: 'LIB_PRI_003',
+        title: 'Science Explorers - Living Things',
+        subject: 'Science',
+        educationLevel: 'primary',
+        pdfPath: '/library/primary/science/science-explorers-living-things.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400',
+        author: 'Prof. Michael Chen',
+        description: 'Discover the amazing world of plants and animals.',
+        pages: 110,
+        publishedYear: 2024
+    },
+    {
+        bookId: 'LIB_PRI_004',
+        title: 'Colors and Shapes Around Us',
+        subject: 'Art',
+        educationLevel: 'primary',
+        pdfPath: '/library/primary/art/colors-and-shapes.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400',
+        author: 'Lisa Martinez',
+        description: 'Learn about colors, shapes, and basic art concepts.',
+        pages: 80,
+        publishedYear: 2023
+    },
+    {
+        bookId: 'LIB_PRI_005',
+        title: 'Our World - Social Studies',
+        subject: 'Social Studies',
+        educationLevel: 'primary',
+        pdfPath: '/library/primary/social/our-world.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=400',
+        author: 'James Anderson',
+        description: 'Introduction to communities, families, and cultures.',
+        pages: 100,
+        publishedYear: 2024
+    },
+
+    // MIDDLE SCHOOL BOOKS
+    {
+        bookId: 'LIB_MID_001',
+        title: 'Algebra Fundamentals',
+        subject: 'Mathematics',
+        educationLevel: 'middle',
+        pdfPath: '/library/middle/math/algebra-fundamentals.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400',
+        author: 'Dr. Robert Williams',
+        description: 'Master the basics of algebra with clear explanations and practice problems.',
+        pages: 280,
+        publishedYear: 2023
+    },
+    {
+        bookId: 'LIB_MID_002',
+        title: 'English Grammar and Composition',
+        subject: 'English',
+        educationLevel: 'middle',
+        pdfPath: '/library/middle/english/grammar-composition.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400',
+        author: 'Margaret Thompson',
+        description: 'Comprehensive guide to English grammar and writing skills.',
+        pages: 320,
+        publishedYear: 2024
+    },
+    {
+        bookId: 'LIB_MID_003',
+        title: 'Physical Science - Matter and Energy',
+        subject: 'Science',
+        educationLevel: 'middle',
+        pdfPath: '/library/middle/science/physical-science.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=400',
+        author: 'Dr. Patricia Lee',
+        description: 'Explore the properties of matter, energy, and chemical reactions.',
+        pages: 350,
+        publishedYear: 2023
+    },
+    {
+        bookId: 'LIB_MID_004',
+        title: 'World History - Ancient Civilizations',
+        subject: 'History',
+        educationLevel: 'middle',
+        pdfPath: '/library/middle/history/ancient-civilizations.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=400',
+        author: 'Prof. David Kumar',
+        description: 'Journey through ancient Egypt, Greece, Rome, and more.',
+        pages: 290,
+        publishedYear: 2024
+    },
+    {
+        bookId: 'LIB_MID_005',
+        title: 'Introduction to Computer Science',
+        subject: 'Computer Science',
+        educationLevel: 'middle',
+        pdfPath: '/library/middle/cs/intro-computer-science.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400',
+        author: 'Alex Rodriguez',
+        description: 'Learn programming basics and computational thinking.',
+        pages: 240,
+        publishedYear: 2024
+    },
+    {
+        bookId: 'LIB_MID_006',
+        title: 'Geography - Our Planet Earth',
+        subject: 'Geography',
+        educationLevel: 'middle',
+        pdfPath: '/library/middle/geography/planet-earth.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=400',
+        author: 'Dr. Susan Park',
+        description: 'Explore continents, countries, and physical geography.',
+        pages: 260,
+        publishedYear: 2023
+    },
+
+    // UNIVERSITY LEVEL BOOKS
+    {
+        bookId: 'LIB_UNI_001',
+        title: 'Advanced Calculus and Analysis',
+        subject: 'Mathematics',
+        educationLevel: 'university',
+        pdfPath: '/library/university/math/advanced-calculus.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400',
+        author: 'Prof. Richard Feynman',
+        description: 'Comprehensive coverage of multivariable calculus and real analysis.',
+        pages: 520,
+        publishedYear: 2023
+    },
+    {
+        bookId: 'LIB_UNI_002',
+        title: 'Data Structures and Algorithms',
+        subject: 'Computer Science',
+        educationLevel: 'university',
+        pdfPath: '/library/university/cs/data-structures-algorithms.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400',
+        author: 'Dr. Thomas Cormen',
+        description: 'Essential algorithms and data structures for computer science.',
+        pages: 680,
+        publishedYear: 2024
+    },
+    {
+        bookId: 'LIB_UNI_003',
+        title: 'Organic Chemistry - Principles and Mechanisms',
+        subject: 'Chemistry',
+        educationLevel: 'university',
+        pdfPath: '/library/university/chemistry/organic-chemistry.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400',
+        author: 'Dr. Paula Bruice',
+        description: 'In-depth study of organic compounds and reaction mechanisms.',
+        pages: 750,
+        publishedYear: 2023
+    },
+    {
+        bookId: 'LIB_UNI_004',
+        title: 'Modern Physics - Quantum Mechanics',
+        subject: 'Physics',
+        educationLevel: 'university',
+        pdfPath: '/library/university/physics/quantum-mechanics.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=400',
+        author: 'Prof. David Griffiths',
+        description: 'Introduction to quantum mechanics and modern physics.',
+        pages: 580,
+        publishedYear: 2024
+    },
+    {
+        bookId: 'LIB_UNI_005',
+        title: 'Microeconomics - Theory and Applications',
+        subject: 'Economics',
+        educationLevel: 'university',
+        pdfPath: '/library/university/economics/microeconomics.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400',
+        author: 'Dr. Gregory Mankiw',
+        description: 'Principles of microeconomics with real-world applications.',
+        pages: 450,
+        publishedYear: 2023
+    },
+    {
+        bookId: 'LIB_UNI_006',
+        title: 'Database Management Systems',
+        subject: 'Computer Science',
+        educationLevel: 'university',
+        pdfPath: '/library/university/cs/database-systems.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400',
+        author: 'Prof. Ramakrishnan',
+        description: 'Comprehensive guide to relational databases and SQL.',
+        pages: 620,
+        publishedYear: 2024
+    },
+    {
+        bookId: 'LIB_UNI_007',
+        title: 'Literary Analysis - Shakespeare and Beyond',
+        subject: 'English Literature',
+        educationLevel: 'university',
+        pdfPath: '/library/university/literature/literary-analysis.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400',
+        author: 'Dr. Harold Bloom',
+        description: 'Critical analysis of classic and modern literature.',
+        pages: 420,
+        publishedYear: 2023
+    },
+    {
+        bookId: 'LIB_UNI_008',
+        title: 'Artificial Intelligence - A Modern Approach',
+        subject: 'Computer Science',
+        educationLevel: 'university',
+        pdfPath: '/library/university/cs/artificial-intelligence.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400',
+        author: 'Stuart Russell & Peter Norvig',
+        description: 'Comprehensive introduction to AI concepts and techniques.',
+        pages: 820,
+        publishedYear: 2024
+    },
+    {
+        bookId: 'LIB_UNI_009',
+        title: 'Cell Biology and Genetics',
+        subject: 'Biology',
+        educationLevel: 'university',
+        pdfPath: '/library/university/biology/cell-biology.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400',
+        author: 'Dr. Bruce Alberts',
+        description: 'Molecular biology, genetics, and cellular processes.',
+        pages: 690,
+        publishedYear: 2023
+    },
+    {
+        bookId: 'LIB_UNI_010',
+        title: 'World History - 20th Century',
+        subject: 'History',
+        educationLevel: 'university',
+        pdfPath: '/library/university/history/20th-century.pdf',
+        coverImage: 'https://images.unsplash.com/photo-1568667256549-094345857637?w=400',
+        author: 'Prof. Eric Hobsbawm',
+        description: 'Major events and transformations of the 20th century.',
+        pages: 540,
+        publishedYear: 2024
+    }
+];
+
+async function seedLibraryBooks() {
+    try {
+        console.log('🔌 Connecting to MongoDB...');
+        await mongoose.connect(MONGODB_URI);
+        console.log('✅ Connected to MongoDB successfully');
+
+        console.log('🗑️  Clearing existing library_books collection...');
+        await LibraryBook.deleteMany({});
+        console.log('✅ Cleared existing data');
+
+        console.log('📚 Inserting library books...');
+        const result = await LibraryBook.insertMany(libraryBooks);
+        console.log(`✅ Successfully inserted ${result.length} books`);
+
+        // Count by education level
+        const primaryCount = await LibraryBook.countDocuments({ educationLevel: 'primary' });
+        const middleCount = await LibraryBook.countDocuments({ educationLevel: 'middle' });
+        const universityCount = await LibraryBook.countDocuments({ educationLevel: 'university' });
+
+        console.log('\n📊 Books by Education Level:');
+        console.log(`   Primary: ${primaryCount} books`);
+        console.log(`   Middle: ${middleCount} books`);
+        console.log(`   University: ${universityCount} books`);
+        console.log(`   Total: ${result.length} books`);
+
+        // List unique subjects
+        const subjects = await LibraryBook.distinct('subject');
+        console.log(`\n📖 Subjects covered: ${subjects.join(', ')}`);
+
+        console.log('\n✨ Library books seeding completed successfully!');
+        process.exit(0);
+    } catch (error) {
+        console.error('❌ Error seeding library books:', error);
+        process.exit(1);
+    }
+}
+
+// Run the seed function
+seedLibraryBooks();

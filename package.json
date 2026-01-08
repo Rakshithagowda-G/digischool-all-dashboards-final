@@ -5,12 +5,12 @@
     "private": true,
     "scripts": {
         "dev": "concurrently \"npm run dev:login\" \"npm run dev:student\" \"npm run dev:admin\" \"npm run dev:teacher\" \"npm run dev:parent\" --names \"LOGIN,STUDENT,ADMIN,TEACHER,PARENT\" --prefix-colors \"cyan,green,red,yellow,magenta\"",
-        "dev:login": "cd digi-dash/login && npm run dev",
-        "dev:student": "cd digi-dash/5th_grade && npm run dev",
-        "dev:admin": "cd digi-dash/ADMIN-DB && npm run dev",
-        "dev:teacher": "cd digi-dash/schoolManagementFrontend && npm run dev",
-        "dev:parent": "cd digi-dash/Parent && npm run dev",
-        "install:all": "cd digi-dash && npm install && cd login && npm install && cd ../5th_grade && npm install && cd ../ADMIN-DB && npm install && cd ../schoolManagementFrontend && npm install && cd ../Parent && npm install"
+        "dev:login": "npm --prefix apps/login run dev",
+        "dev:student": "npm --prefix apps/studnet-primary run dev",
+        "dev:admin": "npm --prefix apps/ADMIN-DB run dev",
+        "dev:teacher": "npm --prefix apps/teacher-dashboard run dev",
+        "dev:parent": "npm --prefix apps/Parent run dev",
+        "install:all": "npm --prefix apps/login install && npm --prefix apps/student-primary install && npm --prefix apps/student-middle-school install && npm --prefix apps/student-university install && npm --prefix apps/ADMIN-DB install && npm --prefix apps/teacher-dashboard install && npm --prefix apps/Parent install"
     },
     "devDependencies": {
         "concurrently": "^8.2.2"

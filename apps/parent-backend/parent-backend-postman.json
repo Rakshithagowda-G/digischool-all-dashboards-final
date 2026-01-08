@@ -1,0 +1,474 @@
+{
+    "info": {
+        "_postman_id": "c7a8b4d1-2e3f-4a5b-9c6d-7e8f9a0b1c2d",
+        "name": "Parent BFF API",
+        "description": "Postman collection for testing the Parent BFF Home Page APIs.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/health",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "health"
+                    ]
+                },
+                "description": "Check if the backend server and database are running."
+            },
+            "response": []
+        },
+        {
+            "name": "Home Page",
+            "item": [
+                {
+                    "name": "Get Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/home/summary?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "home",
+                                "summary"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Attendance Overview",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/home/attendance-overview?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "home",
+                                "attendance-overview"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        },
+                        "description": "Fetches monthly attendance overview with day-wise status."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Latest Results",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/home/latest-results?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "home",
+                                "latest-results"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Assignments",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/home/assignments?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "home",
+                                "assignments"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Announcements",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/home/announcements",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "home",
+                                "announcements"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Attendance Page",
+            "item": [
+                {
+                    "name": "Get Header Info",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/attendance/header?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "attendance",
+                                "header"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Yearly Rate",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/attendance/yearly-rate?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "attendance",
+                                "yearly-rate"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Monthly Summary (Present/Absent/Leave)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/attendance/summary?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "attendance",
+                                "summary"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Subject Wise Table",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/attendance/subjects?studentId=STU12345&year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "attendance",
+                                "subjects"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                },
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Profile Page",
+            "item": [
+                {
+                    "name": "Get Profile Info",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/profile?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "profile"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Results Page",
+            "item": [
+                {
+                    "name": "Get Profile Info",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/results/profile?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "results",
+                                "profile"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Top Subjects",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/results/top-subjects?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "results",
+                                "top-subjects"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Subject Marks (Donut Chart)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/results/subject-marks?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "results",
+                                "subject-marks"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Monthly Tests Table",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/results/monthly-tests?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "results",
+                                "monthly-tests"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Performance Page",
+            "item": [
+                {
+                    "name": "Get Academic Strengths (Pie Chart)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/performance/academic-strengths?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "performance",
+                                "academic-strengths"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Grade Progress (Line Chart)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parent/performance/grade-progress?studentId=STU12345",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parent",
+                                "performance",
+                                "grade-progress"
+                            ],
+                            "query": [
+                                {
+                                    "key": "studentId",
+                                    "value": "STU12345"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:5000",
+            "type": "string"
+        }
+    ]
+}

@@ -1,0 +1,877 @@
+{
+    "info": {
+        "_postman_id": "student-home-bff-collection",
+        "name": "Student Dashboard Home APIs",
+        "description": "Postman collection for testing the Student BFF Home Page READ APIs across University, Middle, and Primary dashboards.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "1. Welcome Data",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/home/welcome?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "home",
+                        "welcome"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001",
+                            "description": "Unique identifier of the student"
+                        }
+                    ]
+                },
+                "description": "Returns student name and education level for the welcome card."
+            },
+            "response": []
+        },
+        {
+            "name": "2. Home Summary Stats",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/home/summary?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "home",
+                        "summary"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns stats for the 4 summary cards: Attendance, Assignments Completed, Avg Grade, and Pending Tasks."
+            },
+            "response": []
+        },
+        {
+            "name": "3. Attendance Overview (Calendar)",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/home/attendance-overview?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "home",
+                        "attendance-overview"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns the most recent monthly attendance snapshot with day-wise status."
+            },
+            "response": []
+        },
+        {
+            "name": "4. Top Assignments",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/home/assignments?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "home",
+                        "assignments"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns top 5 assignments sorted by due date."
+            },
+            "response": []
+        },
+        {
+            "name": "5. Latest Announcements",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/home/announcements",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "home",
+                        "announcements"
+                    ]
+                },
+                "description": "Returns latest 5 announcements issued by the school."
+            },
+            "response": []
+        },
+        {
+            "name": "6. GradeBook Widget",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/home/gradebook?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "home",
+                        "gradebook"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns the latest test result with subject-wise marks breakdown."
+            },
+            "response": []
+        },
+        {
+            "name": "7. Primary Performance",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/home/performance?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "home",
+                        "performance"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns overall performance percentage for the Primary dashboard's specialized widget."
+            },
+            "response": []
+        },
+        {
+            "name": "8. Result Overview",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/results/overview?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "results",
+                        "overview"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns student result overview including total marks, percentage, rank, and status."
+            },
+            "response": []
+        },
+        {
+            "name": "9. Subject Wise Marks",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/results/subjects?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "results",
+                        "subjects"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns subject-wise marks, max/min marks, percentage, and pass/fail status."
+            },
+            "response": []
+        },
+        {
+            "name": "10. Performance Chart",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/results/performance?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "results",
+                        "performance"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns data for performance donut/pie charts including total marks and subject-wise values."
+            },
+            "response": []
+        },
+        {
+            "name": "11. Top Performing Subjects",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/results/top-subjects?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "results",
+                        "top-subjects"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns the highest scoring subjects for the Middle school dashboard."
+            },
+            "response": []
+        },
+        {
+            "name": "12. Teacher Remarks",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/results/remarks?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "results",
+                        "remarks"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns teacher remarks and teacher name for the results page."
+            },
+            "response": []
+        },
+        {
+            "name": "13. Student Announcements",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/announcements?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "announcements"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns a list of announcements relevant to the student (based on education level) with title, message, issuedDate, and issuedBy details."
+            },
+            "response": []
+        },
+        {
+            "name": "14. Today's Schedule",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/events/today?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "events",
+                        "today"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns a list of classes/events scheduled for today, filtered by student's education level."
+            },
+            "response": []
+        },
+        {
+            "name": "15. Upcoming Classes",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/events/upcoming?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "events",
+                        "upcoming"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns a list of future classes/events (tomorrow onwards), filtered by student's education level."
+            },
+            "response": []
+        },
+        {
+            "name": "16. Student Courses",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/courses?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "courses"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns a list of courses relevant to the student's education level."
+            },
+            "response": []
+        },
+        {
+            "name": "17. Attendance Header Stats",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/attendance/header?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "attendance",
+                        "header"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns top summary cards: Total Classes, Attended, Absent, Leaves, and Attendance Percentage."
+            },
+            "response": []
+        },
+        {
+            "name": "18. Monthly Attendance Rate",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/attendance/monthly-rate?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "attendance",
+                        "monthly-rate"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns monthly attendance snapshots sorted by year and month for the trend chart."
+            },
+            "response": []
+        },
+        {
+            "name": "19. Attendance Summary Cards",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/attendance/summary?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "attendance",
+                        "summary"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns total Present, Absent, and Leaves from the latest snapshot."
+            },
+            "response": []
+        },
+        {
+            "name": "20. Subject-wise Attendance Table",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/attendance/subject-wise?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "attendance",
+                        "subject-wise"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns subject-wise attendance breakdown with percentage and status (Good/Average/Poor)."
+            },
+            "response": []
+        },
+        {
+            "name": "21. Student Profile",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/profile?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "profile"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                },
+                "description": "Returns static personal information of the student for the profile page."
+            },
+            "response": []
+        },
+        {
+            "name": "22. Assignment Summary Cards",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/assignments/summary?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "assignments",
+                        "summary"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "23. Assignment List",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/assignments?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "assignments"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "24. Submit Today",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/assignments/submit-today?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "assignments",
+                        "submit-today"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "25. Download Assignment",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/assignments/ASG001/download?studentId=STU001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "assignments",
+                        "ASG001",
+                        "download"
+                    ],
+                    "query": [
+                        {
+                            "key": "studentId",
+                            "value": "STU001"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "26. E-Library - Get All Books",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/library/books?educationLevel=middle",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "library",
+                        "books"
+                    ],
+                    "query": [
+                        {
+                            "key": "educationLevel",
+                            "value": "middle",
+                            "description": "Education level: primary, middle, or university"
+                        }
+                    ]
+                },
+                "description": "Returns all library books filtered by education level (primary, middle, or university)."
+            },
+            "response": []
+        },
+        {
+            "name": "27. E-Library - New Arrivals",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/library/books/new-arrivals?educationLevel=middle",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "library",
+                        "books",
+                        "new-arrivals"
+                    ],
+                    "query": [
+                        {
+                            "key": "educationLevel",
+                            "value": "middle",
+                            "description": "Education level: primary, middle, or university"
+                        }
+                    ]
+                },
+                "description": "Returns the latest 4 books for the specified education level, sorted by creation date."
+            },
+            "response": []
+        },
+        {
+            "name": "28. E-Library - Get Books by Subject",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/library/books/subject?educationLevel=middle&subject=Mathematics",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "library",
+                        "books",
+                        "subject"
+                    ],
+                    "query": [
+                        {
+                            "key": "educationLevel",
+                            "value": "middle",
+                            "description": "Education level: primary, middle, or university"
+                        },
+                        {
+                            "key": "subject",
+                            "value": "Mathematics",
+                            "description": "Subject name (case-insensitive, partial match)"
+                        }
+                    ]
+                },
+                "description": "Returns books filtered by education level and subject."
+            },
+            "response": []
+        },
+        {
+            "name": "29. E-Library - Download Book PDF",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/library/books/download/LIB_MID_001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "library",
+                        "books",
+                        "download",
+                        "LIB_MID_001"
+                    ]
+                },
+                "description": "Downloads the PDF file for the specified book. Returns book info until actual PDFs are uploaded."
+            },
+            "response": []
+        },
+        {
+            "name": "30. E-Library - Search Books",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/library/search?educationLevel=middle&query=algebra",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "library",
+                        "search"
+                    ],
+                    "query": [
+                        {
+                            "key": "educationLevel",
+                            "value": "middle",
+                            "description": "Education level: primary, middle, or university"
+                        },
+                        {
+                            "key": "query",
+                            "value": "algebra",
+                            "description": "Search term (searches in title, subject, author, description)"
+                        }
+                    ]
+                },
+                "description": "Searches library books by title, subject, author, or description for the specified education level."
+            },
+            "response": []
+        },
+        {
+            "name": "31. E-Library - Get Subjects",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/library/subjects?educationLevel=middle",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "library",
+                        "subjects"
+                    ],
+                    "query": [
+                        {
+                            "key": "educationLevel",
+                            "value": "middle",
+                            "description": "Education level: primary, middle, or university"
+                        }
+                    ]
+                },
+                "description": "Returns a sorted list of unique subjects available for the specified education level."
+            },
+            "response": []
+        },
+        {
+            "name": "32. E-Library - Get Book by ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/student/library/books/LIB_MID_001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student",
+                        "library",
+                        "books",
+                        "LIB_MID_001"
+                    ]
+                },
+                "description": "Returns detailed information about a specific book by its bookId."
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:3002",
+            "type": "string"
+        }
+    ]
+}
