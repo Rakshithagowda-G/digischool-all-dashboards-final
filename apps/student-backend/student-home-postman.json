@@ -7,6 +7,61 @@
     },
     "item": [
         {
+            "name": "AUTH - Student Login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"loginId\": \"stu001.university\",\n  \"password\": \"password123\"\n}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/api/auth/login",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "auth",
+                        "login"
+                    ]
+                },
+                "description": "Student login endpoint. Returns JWT token and user information.\n\nTest Credentials:\n- University: stu001.university / password123\n- Middle School: stu002.middle / password123\n- Primary: stu003.primary / password123"
+            },
+            "response": []
+        },
+        {
+            "name": "AUTH - Verify Token",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "description": "JWT token from login response"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/api/auth/verify",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "auth",
+                        "verify"
+                    ]
+                },
+                "description": "Verify if the JWT token is valid and get user information."
+            },
+            "response": []
+        },
+        {
             "name": "1. Welcome Data",
             "request": {
                 "method": "GET",

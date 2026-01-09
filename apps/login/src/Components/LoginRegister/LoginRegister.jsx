@@ -356,6 +356,63 @@ const LoginRegister = () => {
     e.preventDefault();
     if (loading) return;
 
+    // Special handling for Student role - use backend API
+    if (selectedRole === "Student") {
+      // Validate inputs
+      if (!email.trim()) {
+        showToast("Please enter your Login ID.");
+        return;
+      }
+
+      if (!password.trim()) {
+        showToast("Please enter your password.");
+        return;
+      }
+
+      setLoading(true);
+      try {
+        // Call student backend login API
+        const response = await fetch('http://localhost:3002/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            loginId: email.trim(), // Using email field for loginId
+            password: password.trim()
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Login failed');
+        }
+
+        // Store authentication data
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('studentId', data.studentId);
+        localStorage.setItem('educationLevel', data.educationLevel);
+        localStorage.setItem('role', data.role);
+        localStorage.setItem('studentName', data.name);
+
+        showToast(`Welcome ${data.name}!`);
+
+        // Redirect based on education level
+        setTimeout(() => {
+          redirectToStudentApp(data.educationLevel);
+        }, 800);
+
+      } catch (err) {
+        console.error('Login error:', err);
+        showToast(err.message || 'Login failed. Please check your credentials.');
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
+    // Original OTP flow for other roles (Teacher, Parent, Admin)
     if (otpRequested) {
       const otpValue = getOtpValue();
       if (otpValue.length !== 6) {
@@ -400,10 +457,27 @@ const LoginRegister = () => {
     }
   };
 
+  // Function to redirect to student app based on education level
+  const redirectToStudentApp = (educationLevel) => {
+    const studentRedirects = {
+      primary: "http://localhost:5173",      // Primary dashboard
+      middle: "http://localhost:5172",       // Middle School dashboard
+      university: "http://localhost:5171"    // University dashboard
+    };
+
+    const redirectUrl = studentRedirects[educationLevel.toLowerCase()];
+    if (redirectUrl) {
+      window.location.href = redirectUrl;
+    } else {
+      // Fallback to primary if education level not recognized
+      window.location.href = "http://localhost:5173";
+    }
+  };
+
   // Function to redirect to the appropriate application based on role
   const redirectToRoleApp = () => {
     const roleRedirects = {
-      Student: "http://localhost:5173",    // 5th_grade
+      Student: "http://localhost:5173",    // 5th_grade (will be overridden by redirectToStudentApp)
       Admin: "http://localhost:5174",      // ADMIN-DB
       Teacher: "http://localhost:5175",    // schoolManagementFrontend
       Parent: "http://localhost:5176"      // Parent
@@ -477,12 +551,12 @@ const LoginRegister = () => {
                   <input
                     ref={emailRef}
                     name="email"
-                    type="email"
-                    placeholder="Email ID"
+                    type={selectedRole === "Student" ? "text" : "email"}
+                    placeholder={selectedRole === "Student" ? "Login ID" : "Email ID"}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    aria-invalid={email.length > 0 && !isEmailValid}
+                    aria-invalid={selectedRole !== "Student" && email.length > 0 && !isEmailValid}
                   />
                   <FaEnvelope className="icon" />
                 </div>
@@ -498,7 +572,8 @@ const LoginRegister = () => {
                   <FaLock className="icon" />
                 </div>
 
-                {!otpRequested && (
+                {/* Hide OTP request for Student role */}
+                {!otpRequested && selectedRole !== "Student" && (
                   <div className="otp-request-block">
                     <button
                       className="secondary"

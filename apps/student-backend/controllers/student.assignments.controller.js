@@ -1,6 +1,6 @@
 import Assignment from '../models/assignment.model.js';
 
-const getStudentId = (req) => req.user?.studentId || req.query.studentId;
+const getStudentId = (req) => req.user.studentId; // From JWT token
 
 // Helper to get start and end of "Today"
 const getTodayRange = () => {

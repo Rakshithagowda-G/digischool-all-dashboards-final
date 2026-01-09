@@ -2,7 +2,7 @@ import AttendanceSnapshot from '../models/attendance.model.js';
 import Student from '../models/student.model.js';
 import Course from '../models/course.model.js';
 
-const getStudentId = (req) => req.user?.studentId || req.query.studentId;
+const getStudentId = (req) => req.user.studentId; // From JWT token
 
 const monthOrder = {
     'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
